@@ -1,6 +1,7 @@
 .{
-    .name = "freetype",
+    .name = .freetype,
     .version = "0.0.0",
+    .fingerprint = 0xac2059b6795d983e,
     .paths = .{
         "include",
         "src",
