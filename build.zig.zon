@@ -14,8 +14,8 @@
     },
     .dependencies = .{
         .brotli = .{
-            .url = "git+https://github.com/loftafi/brotli.git#1d05cffd5f3e4f923adb2d392bdab12b073621ea",
-            .hash = "brotli-0.0.0-oHOjmGYwIgAs-oVfC4AxGxLXdsO7eO15WTnR8Av7syDi",
+            .url = "git+https://github.com/loftafi/brotli.git#994496ba7d5a15df15d9e013ee2370a4921ceabf",
+            .hash = "brotli-0.0.1-oHOjmNAwIgBpE3nwx94Rgn9q--U182c9lmaFR2WDS1jK",
         },
     },
 }
