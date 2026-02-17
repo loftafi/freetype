@@ -1,6 +1,6 @@
 .{
     .name = .freetype,
-    .version = "0.0.0",
+    .version = "0.0.2",
     .fingerprint = 0xac2059b6795d983e,
     .paths = .{
         "include",
@@ -14,8 +14,8 @@
     },
     .dependencies = .{
         .brotli = .{
-            .url = "git+https://github.com/loftafi/brotli.git#994496ba7d5a15df15d9e013ee2370a4921ceabf",
-            .hash = "brotli-0.0.1-oHOjmNAwIgBpE3nwx94Rgn9q--U182c9lmaFR2WDS1jK",
+            .url = "git+https://github.com/loftafi/brotli.git#01e758b6eedf73cb8c0967cc1ac46418e12694db",
+            .hash = "brotli-0.0.2-oHOjmMEwIgBFcbO5RA9Z8RwUqsFJnHh7Xj8hzNA51SnF",
         },
     },
 }

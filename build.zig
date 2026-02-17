@@ -10,14 +10,9 @@ pub fn build(b: *std.Build) void {
     const module = b.addModule("freetype", .{
         .target = target,
         .optimize = optimize,
+        .link_libc = true,
     });
 
-    const lib = b.addLibrary(.{
-        .linkage = .static,
-        .name = "freetype",
-        .root_module = module,
-    });
-    lib.linkLibC();
     module.addIncludePath(b.path("include"));
     module.addCMacro("FT2_BUILD_LIBRARY", "1");
 
@@ -30,16 +25,22 @@ pub fn build(b: *std.Build) void {
         if (b.lazyDependency("brotli", .{
             .target = target,
             .optimize = optimize,
-        })) |dep| lib.linkLibrary(dep.artifact("brotli"));
+        })) |dep| module.linkLibrary(dep.artifact("brotli"));
     }
 
     module.addCMacro("HAVE_UNISTD_H", "1");
-
-    lib.addCSourceFiles(.{ .files = &sources, .flags = &.{} });
-    if (target.result.os.tag == .macos) lib.addCSourceFile(.{
+    module.addCSourceFiles(.{ .files = &sources, .flags = &.{} });
+    if (target.result.os.tag == .macos) module.addCSourceFile(.{
         .file = b.path("src/base/ftmac.c"),
         .flags = &.{},
     });
+
+    const lib = b.addLibrary(.{
+        .linkage = .static,
+        .name = "freetype",
+        .root_module = module,
+    });
+
     lib.installHeadersDirectory(b.path("include/freetype"), "freetype", .{});
     lib.installHeader(b.path("include/ft2build.h"), "ft2build.h");
     b.installArtifact(lib);
